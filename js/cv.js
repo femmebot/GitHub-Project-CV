@@ -38,34 +38,29 @@ var githubCreatedProjects = function ( userName ) {
 
   $url = 'https://api.github.com/users/'+ userName + '/repos';
 
-  $.getJSON ($url, function ( response ) {
-    $.each (response, function (index, repos) {
+    // get GitHub user's public repos
+    $.getJSON ($url, function ( response ) {
+      $.each (response, function (index, repos) {
 
-      if (repos.fork === false) {
-        var commitURL = 'https://api.github.com/repos/' + repos.full_name + '/commits';
-        // $('.text').append('<p>' + commitURL + '</p>');
+        // eliminate forked repos from display
+        if (repos.fork === false) {
 
-        var currentRepo = '';
+          var currentRepo = '';
 
-        $.getJSON ( commitURL,function ( commitResponse ) {
-          $.each ( commitResponse, function (index, commitData) {
-            // console.log( index + ' ' + commitData.commit.committer.name + ' ' + repos.owner.login );
-            if ( commitData.commit.committer.name === repos.owner.login && repos.name != currentRepo ) {
-              $('.text').append('<p>' + repos.name + '</p>');
-              currentRepo = repos.name;
+              if ( repos.name != currentRepo ) {
+                $('.text').append('<p>' + repos.name + '</p>');
+                currentRepo = repos.name;
+              } // end if statement
 
-            } // end commits if statement
-          }) // end .each commitResponse loop
+          // repoName += '<p>' + repos.full_name + '</p>';
+          // $('.text').append('<p>' + repos.full_name + '</p>');        }
+          // $('.text').text( repoName );
 
-        }) // end getJSON commitURL callback function
+        } // end repos.fork if statement
 
-        // repoName += '<p>' + repos.full_name + '</p>';
-        // $('.text').append('<p>' + repos.full_name + '</p>');        }
-        // $('.text').text( repoName );
+      }) // end .each response callback function
+    }) // end main response callback
 
-      } // end repos.fork if statement
-    }) // end .each response callback function
-  }) // end main response callback
 } // end function githubCreatedProjects
 
 
