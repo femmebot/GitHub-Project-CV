@@ -55,7 +55,7 @@ var githubCreatedProjects = function ( userName ) {
                 $('.row').append($moduleOpen +
                   '<h3>' + repos.name + '</h3>' +
                   '<p>' + repos.description + '</p>' +
-                  '<p>' + '<a href="' + repos.html_url + ' target="_blank">View Repository</a>' + '</p>' +
+                  '<p>' + '<a href="' + repos.html_url + '" target="_blank">View Repository</a>' + '</p>' +
                   $moduleClose);
                 currentRepo = repos.name;
                 // console.log(document.documentElement.innerHTML);
