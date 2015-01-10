@@ -8,9 +8,9 @@ body { background-color: #aed6de; }
 .lede .content h1 { text-transform: uppercase; font: 90px/100px 'BrandonGrotesque-Black', 'Helvetica Neue', 'Helvetica', sans-serif; color: #f1ece9; padding: 0; margin: 0 0 30px; }
 .lede .content h2 { text-transform: uppercase; font: 11px/15px 'Chivo', 'Helvetica', sans-serif; color: #000; letter-spacing: .15em; margin: 0 5px; }
 .lede .content p { font: 400 16px/25px 'Chivo', 'Helvetica', sans-serif; margin: 30px 0; max-width: 540px; color: #578; -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; }
-.lede .content p a { color: #c54; }
+.lede .content p a { color: #a31; }
 .lede .content p a:hover { text-decoration: none; border-bottom: 1px solid #a31; }
-.lede .content .tinytype { font: 10px/11px 'Chivo', 'Helvetica', sans-serif; }
+.lede .content .tinytype { font: 11px/12px 'Chivo', Helvetica, Arial, sans-serif; }
 .lede .content hr { width: 15px; margin: 50px 0 15px 0; border-color: #fff; }
 .lede .btn { height: 60px; background-color: #f66; color: #333; margin: 20px 0; padding-left: 30px; padding-right: 30px; font: 16px 'Chivo', 'Helvetica', sans-serif; }
 .showcase { background: transparent url('../images/bg-illo.png') center 0 no-repeat; padding: 120px 10px 200px 10px; }
