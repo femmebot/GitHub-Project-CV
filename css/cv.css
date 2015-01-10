@@ -4,7 +4,7 @@ body { background-color: #aed6de; }
 .lede .eyebrow a { color: #fff; }
 .lede .eyebrow a:hover { text-decoration: none; }
 .lede .series { padding-top: 16px; height: 70px; width: 60px; font: 300 54px/50px 'Oswald', 'Trebuchet MS', sans-serif; color: #9dbec5; }
-.lede .content { margin: 0 0 40px 100px; }
+.lede .content { margin: 0 0 0 100px; }
 .lede .content h1 { text-transform: uppercase; font: 90px/100px 'BrandonGrotesque-Black', 'Helvetica Neue', 'Helvetica', sans-serif; color: #f1ece9; padding: 0; margin: 0 0 30px; }
 .lede .content h2 { text-transform: uppercase; font: 11px/15px 'Chivo', 'Helvetica', sans-serif; color: #000; letter-spacing: .15em; margin: 0 5px; }
 .lede .content p { font: 400 16px/25px 'Chivo', 'Helvetica', sans-serif; margin: 30px 0; max-width: 540px; color: #578; -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; }
@@ -12,8 +12,8 @@ body { background-color: #aed6de; }
 .lede .content p a:hover { text-decoration: none; border-bottom: 1px solid #a31; }
 .lede .content .tinytype { font: 11px/12px 'Chivo', Helvetica, Arial, sans-serif; }
 .lede .content hr { width: 15px; margin: 50px 0 15px 0; border-color: #fff; }
-.lede .btn { height: 60px; background-color: #f66; color: #333; margin: 20px 0; padding-left: 30px; padding-right: 30px; font: 16px 'Chivo', 'Helvetica', sans-serif; }
-.showcase { background: transparent url('../images/bg-illo.png') center 0 no-repeat; padding: 120px 10px 200px 10px; }
+.lede .btn { height: 60px; background-color: #f66; color: #333; padding-left: 30px; padding-right: 30px; font: 16px 'Chivo', 'Helvetica', sans-serif; }
+.showcase { background: transparent url('../images/bg-illo.png') center 0 no-repeat; padding: 60px 10px 200px 10px; }
 .showcase .module { background-color: rgba(255, 255, 255, .7); max-width: 460px; height: 300px; padding: 20px 60px; margin: 10px; overflow: hidden; }
 .showcase .module h3 { text-transform: uppercase; word-wrap: break-word; font: 30px/32px 'BrandonGrotesque-Black', 'Helvetica Neue', 'Helvetica', sans-serif; color: #43403c; margin: 30px 0 0 0; min-height: 100px; }
 .showcase p { padding: 0; margin: 0 0 15px 0; list-style: none; font: 12px/15px 'Chivo', 'Helvetica Neue', Helvetica, Arial, sans-serif; color: #555; max-width: 300px; margin-left: 60px; }
