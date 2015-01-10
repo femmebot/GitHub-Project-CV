@@ -34,7 +34,7 @@ var githubCreatedProjects = function ( userName ) {
 
   console.log(userName);
 
-  $('.text').text('fetching Github projects created by ' + userName + '...');
+  // $('.text').text('fetching Github projects created by ' + userName + '...');
 
   $url = 'https://api.github.com/users/'+ userName + '/repos';
 
@@ -48,8 +48,17 @@ var githubCreatedProjects = function ( userName ) {
           var currentRepo = '';
 
               if ( repos.name != currentRepo ) {
-                $('.text').append('<p>' + repos.name + '</p>');
+                // construct module
+                $moduleOpen = '<div class="col-xs-12 col-md-6 module">';
+                $moduleClose = '</div>';
+
+                $('.row').append($moduleOpen +
+                  '<h3>' + repos.name + '</h3>' +
+                  '<p>' + repos.description + '</p>' +
+                  '<p>' + '<a href="' + repos.html_url + ' target="_blank">View Repository</a>' + '</p>' +
+                  $moduleClose);
                 currentRepo = repos.name;
+                // console.log(document.documentElement.innerHTML);
               } // end if statement
 
           // repoName += '<p>' + repos.full_name + '</p>';
