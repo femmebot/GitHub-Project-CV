@@ -5,13 +5,13 @@
 /* Use repos + commits to determine repos contributed to */
 /* https://api.github.com/repos/<username>/<repo name>/commits */
 
-// var $githubUsername = 'femmebot';
+var $githubUsername = 'femmebot';
 // var $url = 'https://api.github.com/users/'+ $githubUsername + '/repos';
 
 
 $( '.btn' ).click ( function () {
 
-  githubCreatedProjects( 'femmebot' );
+  githubCreatedProjects( $githubUsername );
 
 });
 
