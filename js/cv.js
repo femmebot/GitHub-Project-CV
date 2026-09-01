@@ -36,36 +36,50 @@ var githubCreatedProjects = function ( userName ) {
 
   // $('.text').text('fetching Github projects created by ' + userName + '...');
 
-  $url = 'https://api.github.com/users/'+ userName + '/repos';
+  var url = 'https://api.github.com/users/' + encodeURIComponent(userName) + '/repos?sort=created&direction=desc&per_page=100';
 
     // get GitHub user's public repos
-    $.getJSON ($url, function ( response ) {
+    $.getJSON (url, function ( response ) {
+      var matchingRepos = [];
+      var pendingChecks = 0;
+
       $.each (response, function (index, repos) {
 
-        // eliminate forked repos from display
-        if (repos.fork === false) {
+        // A created repository must be owned by the user and not be a fork.
+        if (repos.fork === false && repos.owner.login.toLowerCase() === userName.toLowerCase()) {
+          pendingChecks++;
+          var commitsUrl = 'https://api.github.com/repos/' + repos.full_name + '/commits?author=' + encodeURIComponent(userName) + '&per_page=1';
 
-          var currentRepo = '';
+          // Commits on the default branch are commits that made it into the repository.
+          $.getJSON (commitsUrl).done (function (commits) {
+            if (commits.length > 0) {
+              matchingRepos.push(repos);
+            }
+          }).always (function () {
 
-              if ( repos.name != currentRepo ) {
-                // construct module
-                $moduleOpen = '<div class="col-xs-12 col-md-6 module">';
-                $moduleClose = '</div>';
+            pendingChecks--;
+            if (pendingChecks === 0) {
+              matchingRepos.sort (function (firstRepo, secondRepo) {
+                return new Date(secondRepo.created_at) - new Date(firstRepo.created_at);
+              });
 
-                $('.row').append($moduleOpen +
-                  '<h3>' + repos.name + '</h3>' +
-                  '<p>' + repos.description + '</p>' +
-                  '<p>' + '<a href="' + repos.html_url + '" target="_blank">View Repository</a>' + '</p>' +
-                  $moduleClose);
-                currentRepo = repos.name;
-                // console.log(document.documentElement.innerHTML);
-              } // end if statement
+              $.each (matchingRepos, function (index, matchingRepo) {
+                var module = $('<div>', { class: 'col-xs-12 col-md-6 module' });
+                var repositoryLink = $('<a>', {
+                  href: matchingRepo.html_url,
+                  target: '_blank',
+                  rel: 'noopener noreferrer',
+                  text: 'View Repository'
+                });
 
-          // repoName += '<p>' + repos.full_name + '</p>';
-          // $('.text').append('<p>' + repos.full_name + '</p>');        }
-          // $('.text').text( repoName );
-
-        } // end repos.fork if statement
+                module.append($('<h3>', { text: matchingRepo.name }));
+                module.append($('<p>', { text: matchingRepo.description || '' }));
+                module.append($('<p>').append(repositoryLink));
+                $('.row').append(module);
+              });
+            }
+          });
+        }
 
       }) // end .each response callback function
     }) // end main response callback
